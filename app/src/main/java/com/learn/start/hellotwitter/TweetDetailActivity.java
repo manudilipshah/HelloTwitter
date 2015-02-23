@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-
 public class TweetDetailActivity extends Activity {
 
     @Override
@@ -13,7 +12,6 @@ public class TweetDetailActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tweet_detail);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

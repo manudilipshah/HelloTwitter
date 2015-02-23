@@ -19,7 +19,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    sourceSets { main { res.srcDirs = ['src/main/res', 'src/org/codelearn/twitter/models'] } }
+    sourceSets {
+        main {
+            res.srcDirs = ['src/main/res', 'src/org/codelearn/twitter/models']
+            resources.srcDirs = ['src/main/resources', 'src/org/codelearn/twitter/model']
+            java.srcDirs = ['src/main/java', 'src/org/codelearn/twitter/models']
+        }
+    }
 }
 
 dependencies {
