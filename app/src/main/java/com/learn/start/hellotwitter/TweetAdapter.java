@@ -2,20 +2,26 @@ package com.learn.start.hellotwitter;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.view.View;
+import android.widget.TextView;
+import org.codelearn.twitter.models.Tweet;
 
-/**
- * Created by manushah on 15/02/15.
- */
-public class TweetAdapter extends ArrayAdapter{
+//import java.util.ArrayList;
+import java.util.List;
+
+public class TweetAdapter extends ArrayAdapter<Tweet>{
 
     public LayoutInflater inflater;
 
-    public TweetAdapter (Activity activity, String [] items) {
+    List<Tweet> tweets;
 
-        super (activity, R.layout.row_tweet, items);
+    public TweetAdapter (Activity activity, List <Tweet> pTweets) {
+
+        super (activity, R.layout.row_tweet, pTweets);
+
+        tweets = pTweets;
 
         inflater = activity.getWindow().getLayoutInflater();
     }
@@ -23,7 +29,22 @@ public class TweetAdapter extends ArrayAdapter{
     @Override
     public View getView (int position, View convertView, ViewGroup parent) {
 
-        return inflater.inflate(R.layout.row_tweet, parent, false);
+        Tweet tweet = tweets.get(position);
+
+        View tweetView = convertView;
+
+        if (tweetView == null) {
+
+            tweetView = inflater.inflate(R.layout.row_tweet, parent, false);
+        }
+
+        TextView tweetData = (TextView)tweetView.findViewById(R.id.tweetBody);
+        tweetData.setText(tweet.getBody());
+
+        TextView tweetTitle = (TextView)tweetView.findViewById(R.id.tweetTitle);
+        tweetTitle.setText(tweet.getTitle());
+
+        return tweetView;
 
     }
 }
